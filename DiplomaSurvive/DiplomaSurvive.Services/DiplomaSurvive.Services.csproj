@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DiplomaSurvive.Entities\DiplomaSurvive.Entities.csproj" />
+      <ProjectReference Include="..\DiplomaSurvive.Models\DiplomaSurvive.Models.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="3.1.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
+    </ItemGroup>
+
+</Project>

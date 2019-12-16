@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiplomaSurvive.Entities", "DiplomaSurvive.Entities\DiplomaSurvive.Entities.csproj", "{3C08867E-AA07-4545-8A9F-6627F20C329A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiplomaSurvive.Services", "DiplomaSurvive.Services\DiplomaSurvive.Services.csproj", "{83FB62F2-93B2-4170-9CA1-08F057E45DD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiplomaSurvive.Models", "DiplomaSurvive.Models\DiplomaSurvive.Models.csproj", "{A60D8EF4-6944-4D6D-A427-D56C3B065A15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiplomaSurvive.Api", "DiplomaSurvive.Api\DiplomaSurvive.Api.csproj", "{8413FB72-E96D-4C6C-860A-DE1B72392464}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,17 @@ Global
 		{3C08867E-AA07-4545-8A9F-6627F20C329A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C08867E-AA07-4545-8A9F-6627F20C329A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C08867E-AA07-4545-8A9F-6627F20C329A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83FB62F2-93B2-4170-9CA1-08F057E45DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83FB62F2-93B2-4170-9CA1-08F057E45DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83FB62F2-93B2-4170-9CA1-08F057E45DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83FB62F2-93B2-4170-9CA1-08F057E45DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A60D8EF4-6944-4D6D-A427-D56C3B065A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A60D8EF4-6944-4D6D-A427-D56C3B065A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A60D8EF4-6944-4D6D-A427-D56C3B065A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A60D8EF4-6944-4D6D-A427-D56C3B065A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8413FB72-E96D-4C6C-860A-DE1B72392464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8413FB72-E96D-4C6C-860A-DE1B72392464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8413FB72-E96D-4C6C-860A-DE1B72392464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8413FB72-E96D-4C6C-860A-DE1B72392464}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
