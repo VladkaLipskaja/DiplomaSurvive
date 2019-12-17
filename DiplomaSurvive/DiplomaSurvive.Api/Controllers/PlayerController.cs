@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSurvive.Api
 {
-    [Authorize]
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
@@ -78,6 +77,7 @@ namespace DiplomaSurvive.Api
             }
         }
         
+        [Authorize]
         [HttpPut("scores")]
         public async Task<JsonResult> SetUserScores([FromBody] SetUserScoresRequest request)
         {
