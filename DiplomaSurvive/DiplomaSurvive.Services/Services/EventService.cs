@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DiplomaSurvive.Entities;
@@ -15,17 +16,25 @@ namespace DiplomaSurvive.Services
             _eventRepository = eventRepository;
         }
         
-        public async Task<List<EventDto>> GetAsync()
+        public async Task<EventDto> GetAsync()
         {
-            var events = (await _eventRepository.ListAllAsync()).Select(e => new EventDto
-            {
-                ID = e.ID,
-                Finish = e.Finish,
-                Start = e.Start,
-                Title = e.Title
-            }).ToList();
+            var month = DateTime.UtcNow.AddMonths(-1).ToUnixTime();
+            var now = DateTime.UtcNow.ToUnixTime();
+            var evn = (await _eventRepository.GetAsync(e => e.Start < now && e.Start > month && e.Finish > now))
+                .FirstOrDefault();
 
-            return events;
+            if (evn == null)
+            {
+                throw new EventException(EventErrorCode.NoEvents);
+            }
+
+            return new EventDto
+            {
+                ID = evn.ID,
+                Finish = evn.Finish,
+                Start = evn.Start,
+                Title = evn.Title
+            };
         }
     }
 }

@@ -6,6 +6,6 @@ namespace DiplomaSurvive.Services
 {
     public interface IEventService
     {
-        Task<List<EventDto>> GetAsync();
+        Task<EventDto> GetAsync();
     }
 }
