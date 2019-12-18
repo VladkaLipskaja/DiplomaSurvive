@@ -49,7 +49,7 @@
         /// <value>
         /// The leaderboard identifier.
         /// </value>
-        public int LeaderboardID { get; set; }
+        public int? LeaderboardID { get; set; }
         
         /// <summary>
         /// Gets or sets the reward.

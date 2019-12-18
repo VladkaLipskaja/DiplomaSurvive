@@ -29,9 +29,9 @@ namespace DiplomaSurvive.Api
             try
             {
                 var id = _securityService.GetUserId(User);
-                
+
                 var leaderboard = await _leaderboardService.GetLeaderboardByPlayerId(id);
-                
+
                 var response = new GetLeaderboardResponse
                 {
                     Place = leaderboard.Place,
@@ -39,7 +39,7 @@ namespace DiplomaSurvive.Api
                     {
                         Name = x.Name,
                         Place = x.Place,
-                        Score = x.Place
+                        Score = x.Score
                     }).ToArray()
                 };
 

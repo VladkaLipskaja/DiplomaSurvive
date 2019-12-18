@@ -19,7 +19,7 @@ namespace DiplomaSurvive.Services
         
         public async Task AddAsync(string name)
         {
-            var user = await _playerRepository.GetAsync(p => p.UserName.ToLower() == name.ToLower());
+            var user = (await _playerRepository.GetAsync(p => p.UserName.ToLower() == name.ToLower())).FirstOrDefault();
 
             if (user != null)
             {

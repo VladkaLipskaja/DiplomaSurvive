@@ -21,7 +21,7 @@ namespace DiplomaSurvive.Entities
             builder.ToTable("players");
 
             builder.Property(t => t.ID).HasColumnName("id");
-            builder.Property(t => t.UserName).HasColumnName("username");
+            builder.Property(t => t.UserName).HasColumnName("name");
             builder.Property(t => t.Scores).HasColumnName("scores");
             builder.Property(t => t.LeaderboardID).HasColumnName("leaderboardid");
             builder.Property(t => t.Reward).HasColumnName("reward");

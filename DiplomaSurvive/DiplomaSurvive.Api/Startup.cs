@@ -71,16 +71,25 @@ namespace DiplomaSurvive.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Diploma Survive API", Version = "v1" });
-                c.AddSecurityDefinition("Bearer",
-                    new OpenApiSecurityScheme
-                    {
-                        Description = "Please enter into field the word 'Bearer' following by space and JWT",
-                        Name = "Authorization",
-                    });
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    { new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" } }, new string[] { } }
-                } );
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme {
+                    In = ParameterLocation.Header, 
+                    Description = "Please enter into field the word 'Bearer' following by space and JWT",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey 
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                    { 
+                        new OpenApiSecurityScheme 
+                        { 
+                            Reference = new OpenApiReference 
+                            { 
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer" 
+                            } 
+                        },
+                        new string[] { } 
+                    } 
+                });
 
             });
         }

@@ -14,6 +14,9 @@ namespace DiplomaSurvive.Entities
         /// <param name="builder">The builder to be used to configure the entity type.</param>
         public void Configure(EntityTypeBuilder<Leaderboard> builder)
         {
+            // Primary key
+            builder.Property(t => t.ID).ValueGeneratedOnAdd();
+            
             // Properties
             builder.ToTable("leaderboards");
 
