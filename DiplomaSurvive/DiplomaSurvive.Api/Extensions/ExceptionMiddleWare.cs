@@ -2,6 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace DiplomaSurvive.Api
 {
@@ -11,13 +12,16 @@ namespace DiplomaSurvive.Api
         /// </summary>
         private readonly RequestDelegate _next;
 
+        private static ILogger<ExceptionMiddleWare> _logger;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ExceptionMiddleWare"/> class.
         /// </summary>
         /// <param name="next">The next.</param>
-        public ExceptionMiddleWare(RequestDelegate next)
+        public ExceptionMiddleWare(RequestDelegate next, ILogger<ExceptionMiddleWare> logger)
         {
             _next = next;
+            _logger = logger;
         }
 
         /// <summary>
@@ -52,6 +56,8 @@ namespace DiplomaSurvive.Api
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
+            _logger.LogCritical("Time: {date} Message: {message} Inner: {inner} Exception: {exception} Trace: {trace}", DateTime.UtcNow, exception.Message, exception.InnerException?.Message, exception, exception.StackTrace);
+            
             ApiResponse error = new ApiResponse
             {
                 Result = false,
