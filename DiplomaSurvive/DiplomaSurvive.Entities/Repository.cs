@@ -72,6 +72,18 @@ namespace DiplomaSurvive.Entities
 
             await _dbContext.SaveChangesAsync();
         }
+        
+        /// <summary>
+        /// Updates asynchronously.
+        /// </summary>
+        /// <param name="entities">The entities to update.</param>
+        /// <returns>The method is void.</returns>
+        public async Task UpdateRangeAsync(T[] entities)
+        {
+            _dbContext.Set<T>().UpdateRange(entities);;
+
+            await _dbContext.SaveChangesAsync();
+        }
 
         /// <summary>
         /// Deletes asynchronously.

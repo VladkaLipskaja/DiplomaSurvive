@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DiplomaSurvive.Api.Registries;
 using DiplomaSurvive.Entities;
 using DiplomaSurvive.Models;
 using DiplomaSurvive.Services;
+using FluentScheduler;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,9 +25,10 @@ namespace DiplomaSurvive.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, ILogger<SchedulingRegistry> logger)
         {
             Configuration = configuration;
+            _logger = logger;
         }
 
         public IConfiguration Configuration { get; }
@@ -67,6 +70,7 @@ namespace DiplomaSurvive.Api
             services.AddScoped<ILeaderboardService, LeaderboardService>();
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<ISecurityService, SecurityService>();
+           // services.AddHostedService<EventFinalizerService>();
             
             services.AddSwaggerGen(c =>
             {
@@ -94,9 +98,14 @@ namespace DiplomaSurvive.Api
             });
         }
 
+        
+        private ILogger<SchedulingRegistry> _logger { get; set; }
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env, Microsoft.AspNetCore.Hosting.IApplicationLifetime lifetime, IEventService tournamentService)
         {
+            lifetime.ApplicationStopped.Register(OnStop);
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -122,6 +131,14 @@ namespace DiplomaSurvive.Api
             app.UseMiddleware<ExceptionMiddleWare>(); 
             
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            
+            JobManager.Initialize(new SchedulingRegistry(tournamentService, _logger));
+        }
+        
+        
+        private void OnStop()
+        {
+            JobManager.StopAndBlock();
         }
     }
 }

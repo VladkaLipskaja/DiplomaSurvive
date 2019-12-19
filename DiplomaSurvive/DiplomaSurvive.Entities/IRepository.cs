@@ -21,6 +21,8 @@ namespace DiplomaSurvive.Entities
         /// <returns>The method is void.</returns>
         Task UpdateAsync(T entity);
 
+        Task UpdateRangeAsync(T[] entities);
+
         /// <summary>
         /// Deletes asynchronously.
         /// </summary>
