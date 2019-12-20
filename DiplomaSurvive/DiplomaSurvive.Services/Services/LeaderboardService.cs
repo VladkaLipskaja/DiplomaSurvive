@@ -51,7 +51,7 @@ namespace DiplomaSurvive.Services
             var currentPlace = 0;
             var placeOfCurrentPlayer = 0;
             
-            users = users.OrderBy(x => x.Scores).ToList();
+            users = users.OrderByDescending(x => x.Scores).ToList();
 
             for (int i = 0; i < users.Count; i++)
             {
